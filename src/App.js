@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 
 function App() {
+
+
+  
+  const nayoks=["Alomgir", "Manna", "Riyaz", "Jashim", "Shakib", "BappaRaj"];
 
   const products=[
     {name:"Photography",price:"$9.99/mo",link:"https://commerce.adobe.com/checkout/email/?cli=creative&co=US&ctx=fp&items%5B0%5D%5Bcs%5D=0&items%5B0%5D%5Bid%5D=08823B2E8361CE018F9A2C51CF489283&lang=en&promoid=P3KMQYMW&mv=other" },
@@ -19,11 +23,24 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+        <Counter></Counter>
        
        
-  <Products product={products[0]}></Products>
-  <Products product={products[1]}></Products>
-  <Products product={products[2]}></Products>
+  {
+
+  products.map(p=><Products product={p}></Products>)
+
+  }
+
+ <ul>
+
+   {
+
+      nayoks.map(nayok=><li>{nayok}</li>)
+
+   }
+ </ul>
 
          
           </header>
@@ -85,6 +102,21 @@ return (
 
 }
 
+function Counter(){
 
+const [count,setCount]=useState(10);
+
+
+
+
+  return(
+    <div>
+   <h1>Count: {count}</h1>
+   <button onMouseMove={()=>setCount(count+1)}>Increase</button>
+   <button onMouseMove={()=>setCount(count-1)}>Decrease</button>
+   </div>
+
+  )
+}
 
 export default App;
