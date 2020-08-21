@@ -3,31 +3,27 @@ import logo from './logo.svg';
 import './App.css';
 
 
-
-
-  const style={
-
-  color:'red',
-  fontWeight:'700',
-  backgroundColor:'yellow'
-
-  }
-
-  
-  
 function App() {
+
+  const products=[
+    {name:"Photography",price:"$9.99/mo",link:"https://commerce.adobe.com/checkout/email/?cli=creative&co=US&ctx=fp&items%5B0%5D%5Bcs%5D=0&items%5B0%5D%5Bid%5D=08823B2E8361CE018F9A2C51CF489283&lang=en&promoid=P3KMQYMW&mv=other" },
+    
+    {name:"Acrobat Pro",price:"14.99/mo",link:"https://commerce.adobe.com/checkout/email/?cli=creative&co=US&ctx=fp&items%5B0%5D%5Bcs%5D=0&items%5B0%5D%5Bid%5D=792E692BB8D37D00463DA3FB1BC68ECB&lang=en&promoid=P3KMQYMW&mv=other" },
+    
+    {name:"Premiere Rush",price:"$9.99/mo",link:"https://commerce.adobe.com/checkout/email/?cli=creative&co=US&ctx=fp&items%5B0%5D%5Bcs%5D=0&items%5B0%5D%5Bid%5D=50BF575355545EEAB91FA5F0BB682A8B&lang=en&promoid=P3KMQYMW&mv=other" },
   
-  const players=["Messi","C.Ronaldo"];
+     ] 
+ 
+  
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
        
-         
-        <h3>I am a React Hero</h3>
-         <Person></Person>
-          <Footballer name={players[0]} nationality="Argentina" ></Footballer>      
-          <Footballer name={players[1]} nationality="Portugal"></Footballer>
+       
+  <Products product={products[0]}></Products>
+  <Products product={products[1]}></Products>
+  <Products product={products[2]}></Products>
 
          
           </header>
@@ -37,53 +33,58 @@ function App() {
   );
 }
 
+function Products(props){
+const productStyle={
 
-function Person(){
-
-const personStyle={
-color:'orange',
-border:'2px solid yellow',
-marginBottom:'10px',
-padding:"10px 20px"
-
-}
-
-return(
-<div style={personStyle}>
-
-<h1>Shakib Al Hasan</h1>
-<h3>Hero of the Year</h3>
-
-</div>
-
-)
-
+border:"1px solid gray",
+backgroundColor:"lightgray",
+height:"250px",
+width:"200px",
+float:"left",
+color:"black",
+borderRadius:"10px",
+overflow:"hidden",
+marginBottom:"10px"
 
 }
 
-function Footballer(props){
-  const footballStyle={
-   
-    border:"2px solid gold",
-    padding:"10px 15px",
-    borderRadius:"10px"
+const buttonStyle={
 
+  backgroundColor:"skyblue",
+  color:"black",
+  borderRadius:"5px",
+  padding:"5px 8px",
+  fontSize:"18px",
+  
+}
 
-  }
-console.log(props)
+const buttonWriting={
+  textDecoration:"none"
+}
+
+const {name, price, link}=props.product;
 
 return (
 
-<div style={footballStyle}>
+<div style={productStyle}>
 
-<h1>The Best: {props.name} </h1>
-<h3>Nationality: {props.nationality} </h3>
+<h5>{name}</h5>
+<p>{price}</p>
+<button style={buttonStyle} ><a style={buttonWriting} href={link}>Buy Now</a></button>
 
 </div>
+
+
+
+
 
 )
 
 
+
+
 }
+
+
 
 export default App;
